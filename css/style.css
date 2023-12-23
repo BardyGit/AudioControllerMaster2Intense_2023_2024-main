@@ -1,0 +1,383 @@
+/* Style du lecteur audio */
+html, body {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  transition: all 500ms;
+}
+
+canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+
+my-audio-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 404px;
+  margin: 16px auto 0 auto;
+  padding: 20px;
+  background-color: #a7b067; /* Couleur de fond */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border: 4px solid #717c1f;
+}
+
+my-equalizer {
+  display: block;
+  max-width: 404px;
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px;
+  background-color: #a7b067; /* Couleur de fond */
+  border-radius: 0 0 10px 10px;
+  margin-top: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-height: 200px;
+  min-height: 140px;
+  border: 4px solid #717c1f;
+}
+
+.playlist-wrapper {
+  display: flex;
+  margin: 0 auto;
+  max-width: 482px;
+  margin-top: 5px;
+}
+
+.playlist-container {
+  max-width: 200px; /* Assurez-vous que la playlist a la même largeur que le conteneur audio */
+  max-height: 130px;
+  overflow-y: scroll;
+  background-color: #a7b067; /* Couleur de fond */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 10px; /* Ajustez la marge intérieure selon vos préférences */
+  overflow-y: auto; /* Ajoutez une barre de défilement vertical si nécessaire */
+  min-height: 50px;
+  min-width: 200px;
+  margin-left: auto;
+  margin-right: 2px;
+  border: 2px solid #717c1f;
+}
+
+.queue-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-left: 8px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  font-size: 14px;
+}
+
+.queue-container {
+  max-width: 200px;
+  max-height: 130px;
+  overflow-y: scroll;
+  background-color: #a7b067; /* Couleur de fond */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  overflow-y: auto;
+  min-height: 50px;
+  min-width: 200px;
+  margin-right: auto;
+  margin-left: 2px;
+  border: 2px solid #717c1f;
+}
+
+button {
+  background-color: #ca4040;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  min-width: 50px;
+  min-height: 40px;
+  transition: all 500ms;
+}
+
+p {
+  transition: all 500ms;
+}
+
+div {
+  transition: all 500ms;
+}
+
+button:hover {
+  background-color: #b30c00;
+}
+
+/* Style de la barre de progression */
+progress {
+  width: 100%;
+  height: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Style du contrôle de volume */
+input[type="range"] {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Style du lecteur audio lui-même */
+audio {
+  width: 100%;
+}
+
+/* Style de base pour les éléments de la playlist */
+.playlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-left: 8px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  font-size: 14px;
+}
+
+.playlist-item:hover, .playlist-item.playing:hover{
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+/* Style pour la piste en cours de lecture */
+.playlist-item.playing {
+  background-color: #8c8d87;
+  color: #fff;
+}
+
+.playlist-item.played {
+  background-color: #f7f7f7;
+  color: #fff;
+}
+
+/* Style du bouton de lecture */
+.play-button {
+  background-color: #1478ca;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style pour le nom de la piste */
+.track-name {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+}
+
+.volume-icon {
+  margin-left: 10px; /* Ajustez la marge pour l'espacement souhaité */
+  font-size: 24px; /* Ajustez la taille de la police pour l'icône de volume */
+}
+
+.button-container {
+  align-items: center;
+}
+
+body {
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+.equalizer {
+  display: inline-flex;
+}
+
+.section {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin: -32px 8px;
+  .title {
+    line-height: 40px;
+    font-size: 14px;
+    color: #000;
+    font-weight: 700;
+  }
+  .sliders {
+    display: flex;
+  }
+}
+
+.range-slider {
+  width: 30px;
+  height: 110px;
+  background-color: rgba(0, 0, 0, 0.62);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-radius: 4px;
+  .param {
+    color: #f7f7f7;
+    font-size: 14px;
+    line-height: 14px;
+  }
+  .scope {
+    color: #f7f7f7;
+    font-size: 12px;
+    line-height: 12px;
+    &-min {
+      margin-top: 35px;
+    }
+  }
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 200%;
+  background: transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #D8D8D8;
+  border-radius: 3px;
+  border: 0px solid #000000;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.32);
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  background: #448ebf;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #D8D8D8;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #D8D8D8;
+  border-radius: 3px;
+  border: none;
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.32);
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  background: #44BFA3;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #D8D8D8;
+  border: none;
+  border-radius: 6px;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #D8D8D8;
+  border: none;
+  border-radius: 6px;
+}
+
+input[type=range]::-ms-thumb {
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.32);
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  background: #44BFA3;
+  cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #D8D8D8;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #D8D8D8;
+}
+
+h3.presets {
+  z-index: 99999;
+  opacity: 0.8;
+  position: absolute;
+  top: 2%;
+}
+
+div.presets {
+  background-color: white;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 15%;
+  z-index: 99999;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+p.presets {
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  padding: 6px;
+}
+
+p.presets:hover {
+  background-color: rgb(232, 232, 232);
+}
+
+p.presets.selected {
+  background-color: #dcd27b
+}
+
+button.changeTheme {
+  margin-left: 16%;
+  margin-top: 17%;
+}
