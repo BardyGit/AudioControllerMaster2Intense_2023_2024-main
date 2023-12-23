@@ -1,0 +1,2 @@
+# Ignore files with long names
+**/*{255,}
