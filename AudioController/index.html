@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecteur audio</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <script type="module" src="components/my-audio-player.js"></script>
+    <script type="module" src="components/my-playlist.js"></script>
+    <script type="module" src="components/my-equalizer.js"></script>
+    <script type="module" src="components/my-visualizer.js"></script>
+    
+    <script type="text/javascript" src="./js/webaudio-controls.js"></script>
+    <script type="text/javascript" src="./node_modules/butterchurn/lib/butterchurn.js"></script>
+    <script type="text/javascript" src="./node_modules/butterchurn-presets/lib/butterchurnPresetsNonMinimal.min.js"></script>
+</head>
+<body>
+    <my-audio-player></my-audio-player>
+    <my-playlist playlist="./assets/audio/CleanGuitarRiff.mp3, ./assets/audio/9milli.mp3, ./assets/audio/fucked_up.mp3, ./assets/audio/matebkiche.mp3, ./assets/audio/Jailhouse_rock.mp3, ./assets/audio/thrift_shop.mp3, ./assets/audio/fendi.mp3, ./assets/audio/Saiyan.mp3 "></my-playlist>
+    <my-equalizer></my-equalizer>
+    <my-visualizer></my-visualizer>
+</body>
+</html>
