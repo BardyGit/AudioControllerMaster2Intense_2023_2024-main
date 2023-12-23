@@ -127,7 +127,7 @@ export class MyEqualizer extends HTMLElement {
     };
 
     let ranges = document.querySelectorAll('input[type=range], webaudio-slider');
-    console.log(ranges);
+
     ranges.forEach((range) => {
       range.addEventListener('input', () => {
         const filter = filterMap[range.dataset.filter];

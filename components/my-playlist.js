@@ -46,7 +46,6 @@ export class MyPlaylist extends HTMLElement {
     this.playlist.forEach((trackURL, index) => {
       const listItem = document.createElement('div');
       listItem.className = 'playlist-item';
-      console.log(index, this.currentTrackIndex);
       if (index === this.currentTrackIndex) {
         listItem.classList.add('playing');
       }
